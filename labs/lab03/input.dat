@@ -1,0 +1,4 @@
+void main () {
+    valor = (20*3) / (10+2);
+    total = valor - (50 - (20*2));
+}
