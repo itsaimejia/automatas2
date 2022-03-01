@@ -22,12 +22,12 @@ public class AlimentosParser extends Parser {
 		MAMEY=15, SANDIA=16, MANGO=17, CIRUELA=18, CHABACANO=19, PERA=20, DURAZNO=21, 
 		HIGO=22, MEMBRILLO=23, TUNA=24, UVA=25, CAPULIN=26, CEREZA=27, JICAMA=28, 
 		CANA=29, CHIRIMOYA=30, CHICOZAPOTE=31, TEJOCOTE=32, ENERO=33, FEBRERO=34, 
-		TEXT=35, WS=36;
+		MARZO=35, ABRIL=36, NOSPACE=37, WS=38;
 	public static final int
-		RULE_grupo = 0, RULE_meses = 1, RULE_enero = 2, RULE_febrero = 3, RULE_frutas = 4;
+		RULE_grupos = 0, RULE_meses = 1, RULE_frutas = 2;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"grupo", "meses", "enero", "febrero", "frutas"
+			"grupos", "meses", "frutas"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -36,7 +36,8 @@ public class AlimentosParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, "'Enero'", "'Febrero'"
+			null, null, null, null, null, null, null, null, null, "'Enero'", "'Febrero'", 
+			"'Marzo'", "'Abril'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -46,7 +47,8 @@ public class AlimentosParser extends Parser {
 			"NARANJA", "PINA", "PAPAYA", "PLATANO", "TORONJA", "GRANADA", "TAMARINDO", 
 			"MAMEY", "SANDIA", "MANGO", "CIRUELA", "CHABACANO", "PERA", "DURAZNO", 
 			"HIGO", "MEMBRILLO", "TUNA", "UVA", "CAPULIN", "CEREZA", "JICAMA", "CANA", 
-			"CHIRIMOYA", "CHICOZAPOTE", "TEJOCOTE", "ENERO", "FEBRERO", "TEXT", "WS"
+			"CHIRIMOYA", "CHICOZAPOTE", "TEJOCOTE", "ENERO", "FEBRERO", "MARZO", 
+			"ABRIL", "NOSPACE", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -100,63 +102,45 @@ public class AlimentosParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
-	public static class GrupoContext extends ParserRuleContext {
-		public List<TerminalNode> TEXT() { return getTokens(AlimentosParser.TEXT); }
-		public TerminalNode TEXT(int i) {
-			return getToken(AlimentosParser.TEXT, i);
-		}
+	public static class GruposContext extends ParserRuleContext {
 		public List<MesesContext> meses() {
 			return getRuleContexts(MesesContext.class);
 		}
 		public MesesContext meses(int i) {
 			return getRuleContext(MesesContext.class,i);
 		}
-		public GrupoContext(ParserRuleContext parent, int invokingState) {
+		public GruposContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_grupo; }
+		@Override public int getRuleIndex() { return RULE_grupos; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitGrupo(this);
+			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitGrupos(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final GrupoContext grupo() throws RecognitionException {
-		GrupoContext _localctx = new GrupoContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_grupo);
+	public final GruposContext grupos() throws RecognitionException {
+		GruposContext _localctx = new GruposContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_grupos);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(13);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==TEXT) {
-				{
-				{
-				setState(10);
-				match(TEXT);
-				}
-				}
-				setState(15);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			setState(17); 
+			setState(7); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(16);
+				setState(6);
 				meses();
 				}
 				}
-				setState(19); 
+				setState(9); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==ENERO || _la==FEBRERO );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENERO) | (1L << FEBRERO) | (1L << MARZO) | (1L << ABRIL))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -181,25 +165,63 @@ public class AlimentosParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class JanuaryContext extends MesesContext {
-		public EneroContext enero() {
-			return getRuleContext(EneroContext.class,0);
+	public static class AbrilContext extends MesesContext {
+		public TerminalNode ABRIL() { return getToken(AlimentosParser.ABRIL, 0); }
+		public List<FrutasContext> frutas() {
+			return getRuleContexts(FrutasContext.class);
 		}
-		public JanuaryContext(MesesContext ctx) { copyFrom(ctx); }
+		public FrutasContext frutas(int i) {
+			return getRuleContext(FrutasContext.class,i);
+		}
+		public AbrilContext(MesesContext ctx) { copyFrom(ctx); }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitJanuary(this);
+			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitAbril(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FebruaryContext extends MesesContext {
-		public FebreroContext febrero() {
-			return getRuleContext(FebreroContext.class,0);
+	public static class EneroContext extends MesesContext {
+		public TerminalNode ENERO() { return getToken(AlimentosParser.ENERO, 0); }
+		public List<FrutasContext> frutas() {
+			return getRuleContexts(FrutasContext.class);
 		}
-		public FebruaryContext(MesesContext ctx) { copyFrom(ctx); }
+		public FrutasContext frutas(int i) {
+			return getRuleContext(FrutasContext.class,i);
+		}
+		public EneroContext(MesesContext ctx) { copyFrom(ctx); }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitFebruary(this);
+			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitEnero(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FebreroContext extends MesesContext {
+		public TerminalNode FEBRERO() { return getToken(AlimentosParser.FEBRERO, 0); }
+		public List<FrutasContext> frutas() {
+			return getRuleContexts(FrutasContext.class);
+		}
+		public FrutasContext frutas(int i) {
+			return getRuleContext(FrutasContext.class,i);
+		}
+		public FebreroContext(MesesContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitFebrero(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MarzoContext extends MesesContext {
+		public TerminalNode MARZO() { return getToken(AlimentosParser.MARZO, 0); }
+		public List<FrutasContext> frutas() {
+			return getRuleContexts(FrutasContext.class);
+		}
+		public FrutasContext frutas(int i) {
+			return getRuleContext(FrutasContext.class,i);
+		}
+		public MarzoContext(MesesContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitMarzo(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -207,182 +229,109 @@ public class AlimentosParser extends Parser {
 	public final MesesContext meses() throws RecognitionException {
 		MesesContext _localctx = new MesesContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_meses);
+		int _la;
 		try {
-			setState(23);
+			setState(35);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ENERO:
-				_localctx = new JanuaryContext(_localctx);
+				_localctx = new EneroContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(21);
-				enero();
+				{
+				setState(11);
+				match(ENERO);
+				setState(13); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(12);
+					frutas();
+					}
+					}
+					setState(15); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
+				}
 				}
 				break;
 			case FEBRERO:
-				_localctx = new FebruaryContext(_localctx);
+				_localctx = new FebreroContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(22);
-				febrero();
+				{
+				setState(17);
+				match(FEBRERO);
+				setState(19); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(18);
+					frutas();
+					}
+					}
+					setState(21); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
+				}
+				}
+				break;
+			case MARZO:
+				_localctx = new MarzoContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				{
+				setState(23);
+				match(MARZO);
+				setState(25); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(24);
+					frutas();
+					}
+					}
+					setState(27); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
+				}
+				}
+				break;
+			case ABRIL:
+				_localctx = new AbrilContext(_localctx);
+				enterOuterAlt(_localctx, 4);
+				{
+				{
+				setState(29);
+				match(ABRIL);
+				setState(31); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(30);
+					frutas();
+					}
+					}
+					setState(33); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
+				}
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class EneroContext extends ParserRuleContext {
-		public List<TerminalNode> ENERO() { return getTokens(AlimentosParser.ENERO); }
-		public TerminalNode ENERO(int i) {
-			return getToken(AlimentosParser.ENERO, i);
-		}
-		public List<FrutasContext> frutas() {
-			return getRuleContexts(FrutasContext.class);
-		}
-		public FrutasContext frutas(int i) {
-			return getRuleContext(FrutasContext.class,i);
-		}
-		public EneroContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_enero; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitEnero(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final EneroContext enero() throws RecognitionException {
-		EneroContext _localctx = new EneroContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_enero);
-		int _la;
-		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(31); 
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(25);
-					match(ENERO);
-					setState(27); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					do {
-						{
-						{
-						setState(26);
-						frutas();
-						}
-						}
-						setState(29); 
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(33); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class FebreroContext extends ParserRuleContext {
-		public List<TerminalNode> FEBRERO() { return getTokens(AlimentosParser.FEBRERO); }
-		public TerminalNode FEBRERO(int i) {
-			return getToken(AlimentosParser.FEBRERO, i);
-		}
-		public List<FrutasContext> frutas() {
-			return getRuleContexts(FrutasContext.class);
-		}
-		public FrutasContext frutas(int i) {
-			return getRuleContext(FrutasContext.class,i);
-		}
-		public FebreroContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_febrero; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlimentosVisitor ) return ((AlimentosVisitor<? extends T>)visitor).visitFebrero(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final FebreroContext febrero() throws RecognitionException {
-		FebreroContext _localctx = new FebreroContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_febrero);
-		int _la;
-		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(41); 
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(35);
-					match(FEBRERO);
-					setState(37); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					do {
-						{
-						{
-						setState(36);
-						frutas();
-						}
-						}
-						setState(39); 
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FRESA) | (1L << GUAYABA) | (1L << JAMAICA) | (1L << LIMA) | (1L << LIMON) | (1L << MANDARINA) | (1L << MELON) | (1L << NARANJA) | (1L << PINA) | (1L << PAPAYA) | (1L << PLATANO) | (1L << TORONJA) | (1L << GRANADA) | (1L << TAMARINDO) | (1L << MAMEY) | (1L << SANDIA) | (1L << MANGO) | (1L << CIRUELA) | (1L << CHABACANO) | (1L << PERA) | (1L << DURAZNO) | (1L << HIGO) | (1L << MEMBRILLO) | (1L << TUNA) | (1L << UVA) | (1L << CAPULIN) | (1L << CEREZA) | (1L << JICAMA) | (1L << CANA) | (1L << CHIRIMOYA) | (1L << CHICOZAPOTE) | (1L << TEJOCOTE))) != 0) );
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(43); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
 		catch (RecognitionException re) {
@@ -698,16 +647,16 @@ public class AlimentosParser extends Parser {
 
 	public final FrutasContext frutas() throws RecognitionException {
 		FrutasContext _localctx = new FrutasContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_frutas);
+		enterRule(_localctx, 4, RULE_frutas);
 		try {
-			setState(77);
+			setState(69);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case FRESA:
 				_localctx = new FresaContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(45);
+				setState(37);
 				match(FRESA);
 				}
 				break;
@@ -715,7 +664,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new GuayabaContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(46);
+				setState(38);
 				match(GUAYABA);
 				}
 				break;
@@ -723,7 +672,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new JamaicaContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(47);
+				setState(39);
 				match(JAMAICA);
 				}
 				break;
@@ -731,7 +680,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new LimaContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(48);
+				setState(40);
 				match(LIMA);
 				}
 				break;
@@ -739,7 +688,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new LimonContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(49);
+				setState(41);
 				match(LIMON);
 				}
 				break;
@@ -747,7 +696,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new MandarinaContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(50);
+				setState(42);
 				match(MANDARINA);
 				}
 				break;
@@ -755,7 +704,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new MelonContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(51);
+				setState(43);
 				match(MELON);
 				}
 				break;
@@ -763,7 +712,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new NaranjaContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(52);
+				setState(44);
 				match(NARANJA);
 				}
 				break;
@@ -771,7 +720,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new PinaContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(53);
+				setState(45);
 				match(PINA);
 				}
 				break;
@@ -779,7 +728,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new PapayaContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(54);
+				setState(46);
 				match(PAPAYA);
 				}
 				break;
@@ -787,7 +736,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new PlatanoContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(55);
+				setState(47);
 				match(PLATANO);
 				}
 				break;
@@ -795,7 +744,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new ToronjaContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(56);
+				setState(48);
 				match(TORONJA);
 				}
 				break;
@@ -803,7 +752,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new GranadaContext(_localctx);
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(57);
+				setState(49);
 				match(GRANADA);
 				}
 				break;
@@ -811,7 +760,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new TamarincoContext(_localctx);
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(58);
+				setState(50);
 				match(TAMARINDO);
 				}
 				break;
@@ -819,7 +768,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new MameyContext(_localctx);
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(59);
+				setState(51);
 				match(MAMEY);
 				}
 				break;
@@ -827,7 +776,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new SandiaContext(_localctx);
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(60);
+				setState(52);
 				match(SANDIA);
 				}
 				break;
@@ -835,7 +784,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new MangoContext(_localctx);
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(61);
+				setState(53);
 				match(MANGO);
 				}
 				break;
@@ -843,7 +792,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new CiruelaContext(_localctx);
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(62);
+				setState(54);
 				match(CIRUELA);
 				}
 				break;
@@ -851,7 +800,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new ChabacanoContext(_localctx);
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(63);
+				setState(55);
 				match(CHABACANO);
 				}
 				break;
@@ -859,7 +808,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new PeraContext(_localctx);
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(64);
+				setState(56);
 				match(PERA);
 				}
 				break;
@@ -867,7 +816,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new DuraznoContext(_localctx);
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(65);
+				setState(57);
 				match(DURAZNO);
 				}
 				break;
@@ -875,7 +824,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new HigoContext(_localctx);
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(66);
+				setState(58);
 				match(HIGO);
 				}
 				break;
@@ -883,7 +832,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new MembirlloContext(_localctx);
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(67);
+				setState(59);
 				match(MEMBRILLO);
 				}
 				break;
@@ -891,7 +840,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new TunaContext(_localctx);
 				enterOuterAlt(_localctx, 24);
 				{
-				setState(68);
+				setState(60);
 				match(TUNA);
 				}
 				break;
@@ -899,7 +848,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new UvaContext(_localctx);
 				enterOuterAlt(_localctx, 25);
 				{
-				setState(69);
+				setState(61);
 				match(UVA);
 				}
 				break;
@@ -907,7 +856,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new CapulinContext(_localctx);
 				enterOuterAlt(_localctx, 26);
 				{
-				setState(70);
+				setState(62);
 				match(CAPULIN);
 				}
 				break;
@@ -915,7 +864,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new CerezaContext(_localctx);
 				enterOuterAlt(_localctx, 27);
 				{
-				setState(71);
+				setState(63);
 				match(CEREZA);
 				}
 				break;
@@ -923,7 +872,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new JicamaContext(_localctx);
 				enterOuterAlt(_localctx, 28);
 				{
-				setState(72);
+				setState(64);
 				match(JICAMA);
 				}
 				break;
@@ -931,7 +880,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new CanaContext(_localctx);
 				enterOuterAlt(_localctx, 29);
 				{
-				setState(73);
+				setState(65);
 				match(CANA);
 				}
 				break;
@@ -939,7 +888,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new ChirimoyaContext(_localctx);
 				enterOuterAlt(_localctx, 30);
 				{
-				setState(74);
+				setState(66);
 				match(CHIRIMOYA);
 				}
 				break;
@@ -947,7 +896,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new ChichozapoteContext(_localctx);
 				enterOuterAlt(_localctx, 31);
 				{
-				setState(75);
+				setState(67);
 				match(CHICOZAPOTE);
 				}
 				break;
@@ -955,7 +904,7 @@ public class AlimentosParser extends Parser {
 				_localctx = new TejocoteContext(_localctx);
 				enterOuterAlt(_localctx, 32);
 				{
-				setState(76);
+				setState(68);
 				match(TEJOCOTE);
 				}
 				break;
@@ -975,31 +924,30 @@ public class AlimentosParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&R\4\2\t\2\4\3\t\3"+
-		"\4\4\t\4\4\5\t\5\4\6\t\6\3\2\7\2\16\n\2\f\2\16\2\21\13\2\3\2\6\2\24\n"+
-		"\2\r\2\16\2\25\3\3\3\3\5\3\32\n\3\3\4\3\4\6\4\36\n\4\r\4\16\4\37\6\4\""+
-		"\n\4\r\4\16\4#\3\5\3\5\6\5(\n\5\r\5\16\5)\6\5,\n\5\r\5\16\5-\3\6\3\6\3"+
-		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6P\n\6\3\6\2\2\7\2"+
-		"\4\6\b\n\2\2\2r\2\17\3\2\2\2\4\31\3\2\2\2\6!\3\2\2\2\b+\3\2\2\2\nO\3\2"+
-		"\2\2\f\16\7%\2\2\r\f\3\2\2\2\16\21\3\2\2\2\17\r\3\2\2\2\17\20\3\2\2\2"+
-		"\20\23\3\2\2\2\21\17\3\2\2\2\22\24\5\4\3\2\23\22\3\2\2\2\24\25\3\2\2\2"+
-		"\25\23\3\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\32\5\6\4\2\30\32\5\b\5\2"+
-		"\31\27\3\2\2\2\31\30\3\2\2\2\32\5\3\2\2\2\33\35\7#\2\2\34\36\5\n\6\2\35"+
-		"\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\33\3\2"+
-		"\2\2\"#\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\7\3\2\2\2%\'\7$\2\2&(\5\n\6\2\'&"+
-		"\3\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*,\3\2\2\2+%\3\2\2\2,-\3\2\2\2"+
-		"-+\3\2\2\2-.\3\2\2\2.\t\3\2\2\2/P\7\3\2\2\60P\7\4\2\2\61P\7\5\2\2\62P"+
-		"\7\6\2\2\63P\7\7\2\2\64P\7\b\2\2\65P\7\t\2\2\66P\7\n\2\2\67P\7\13\2\2"+
-		"8P\7\f\2\29P\7\r\2\2:P\7\16\2\2;P\7\17\2\2<P\7\20\2\2=P\7\21\2\2>P\7\22"+
-		"\2\2?P\7\23\2\2@P\7\24\2\2AP\7\25\2\2BP\7\26\2\2CP\7\27\2\2DP\7\30\2\2"+
-		"EP\7\31\2\2FP\7\32\2\2GP\7\33\2\2HP\7\34\2\2IP\7\35\2\2JP\7\36\2\2KP\7"+
-		"\37\2\2LP\7 \2\2MP\7!\2\2NP\7\"\2\2O/\3\2\2\2O\60\3\2\2\2O\61\3\2\2\2"+
-		"O\62\3\2\2\2O\63\3\2\2\2O\64\3\2\2\2O\65\3\2\2\2O\66\3\2\2\2O\67\3\2\2"+
-		"\2O8\3\2\2\2O9\3\2\2\2O:\3\2\2\2O;\3\2\2\2O<\3\2\2\2O=\3\2\2\2O>\3\2\2"+
-		"\2O?\3\2\2\2O@\3\2\2\2OA\3\2\2\2OB\3\2\2\2OC\3\2\2\2OD\3\2\2\2OE\3\2\2"+
-		"\2OF\3\2\2\2OG\3\2\2\2OH\3\2\2\2OI\3\2\2\2OJ\3\2\2\2OK\3\2\2\2OL\3\2\2"+
-		"\2OM\3\2\2\2ON\3\2\2\2P\13\3\2\2\2\n\17\25\31\37#)-O";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3(J\4\2\t\2\4\3\t\3"+
+		"\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\6\3\20\n\3\r\3\16\3\21\3\3"+
+		"\3\3\6\3\26\n\3\r\3\16\3\27\3\3\3\3\6\3\34\n\3\r\3\16\3\35\3\3\3\3\6\3"+
+		"\"\n\3\r\3\16\3#\5\3&\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\3\4\3\4\5\4H\n\4\3\4\2\2\5\2\4\6\2\2\2m\2\t\3\2\2\2\4%\3\2\2\2"+
+		"\6G\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2"+
+		"\2\2\f\3\3\2\2\2\r\17\7#\2\2\16\20\5\6\4\2\17\16\3\2\2\2\20\21\3\2\2\2"+
+		"\21\17\3\2\2\2\21\22\3\2\2\2\22&\3\2\2\2\23\25\7$\2\2\24\26\5\6\4\2\25"+
+		"\24\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30&\3\2\2\2\31\33"+
+		"\7%\2\2\32\34\5\6\4\2\33\32\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2\35\36"+
+		"\3\2\2\2\36&\3\2\2\2\37!\7&\2\2 \"\5\6\4\2! \3\2\2\2\"#\3\2\2\2#!\3\2"+
+		"\2\2#$\3\2\2\2$&\3\2\2\2%\r\3\2\2\2%\23\3\2\2\2%\31\3\2\2\2%\37\3\2\2"+
+		"\2&\5\3\2\2\2\'H\7\3\2\2(H\7\4\2\2)H\7\5\2\2*H\7\6\2\2+H\7\7\2\2,H\7\b"+
+		"\2\2-H\7\t\2\2.H\7\n\2\2/H\7\13\2\2\60H\7\f\2\2\61H\7\r\2\2\62H\7\16\2"+
+		"\2\63H\7\17\2\2\64H\7\20\2\2\65H\7\21\2\2\66H\7\22\2\2\67H\7\23\2\28H"+
+		"\7\24\2\29H\7\25\2\2:H\7\26\2\2;H\7\27\2\2<H\7\30\2\2=H\7\31\2\2>H\7\32"+
+		"\2\2?H\7\33\2\2@H\7\34\2\2AH\7\35\2\2BH\7\36\2\2CH\7\37\2\2DH\7 \2\2E"+
+		"H\7!\2\2FH\7\"\2\2G\'\3\2\2\2G(\3\2\2\2G)\3\2\2\2G*\3\2\2\2G+\3\2\2\2"+
+		"G,\3\2\2\2G-\3\2\2\2G.\3\2\2\2G/\3\2\2\2G\60\3\2\2\2G\61\3\2\2\2G\62\3"+
+		"\2\2\2G\63\3\2\2\2G\64\3\2\2\2G\65\3\2\2\2G\66\3\2\2\2G\67\3\2\2\2G8\3"+
+		"\2\2\2G9\3\2\2\2G:\3\2\2\2G;\3\2\2\2G<\3\2\2\2G=\3\2\2\2G>\3\2\2\2G?\3"+
+		"\2\2\2G@\3\2\2\2GA\3\2\2\2GB\3\2\2\2GC\3\2\2\2GD\3\2\2\2GE\3\2\2\2GF\3"+
+		"\2\2\2H\7\3\2\2\2\t\13\21\27\35#%G";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -11,37 +11,39 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface AlimentosVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link AlimentosParser#grupo}.
+	 * Visit a parse tree produced by {@link AlimentosParser#grupos}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitGrupo(AlimentosParser.GrupoContext ctx);
+	T visitGrupos(AlimentosParser.GruposContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code january}
+	 * Visit a parse tree produced by the {@code enero}
 	 * labeled alternative in {@link AlimentosParser#meses}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJanuary(AlimentosParser.JanuaryContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code february}
-	 * labeled alternative in {@link AlimentosParser#meses}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFebruary(AlimentosParser.FebruaryContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlimentosParser#enero}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitEnero(AlimentosParser.EneroContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlimentosParser#febrero}.
+	 * Visit a parse tree produced by the {@code febrero}
+	 * labeled alternative in {@link AlimentosParser#meses}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFebrero(AlimentosParser.FebreroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code marzo}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMarzo(AlimentosParser.MarzoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code abril}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAbril(AlimentosParser.AbrilContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code fresa}
 	 * labeled alternative in {@link AlimentosParser#frutas}.

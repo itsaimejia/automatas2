@@ -5,8 +5,9 @@ import com.parser.AlimentosBaseVisitor;
 import com.parser.AlimentosParser;
 
 public class MyVisitor extends AlimentosBaseVisitor<String> {
-    @Override public String visitGrupo(AlimentosParser.GrupoContext ctx) {
-        System.out.println(ctx.children);
+    @Override public String visitEnero(AlimentosParser.EneroContext ctx) {
+
+        System.out.println(ctx.ENERO().getText());
         return null;
     }
 }

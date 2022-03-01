@@ -1,14 +1,16 @@
 grammar Alimentos;
 
-grupo   :  TEXT* meses+ ;
-
+grupos  : meses+;
 meses   :
-        enero   #january
+        (ENERO frutas+)   #enero
         |
-        febrero #february
+        (FEBRERO frutas+) #febrero
+        |
+        (MARZO frutas+) #marzo
+        |
+        (ABRIL frutas+) #abril
         ;
-enero   :(ENERO frutas+)+;
-febrero :(FEBRERO frutas+)+;
+
 
 frutas  :
         FRESA   #fresa
@@ -111,6 +113,9 @@ TEJOCOTE  :('tejocote' | 'tejocotes' |'Tejocote'|'Tejocotes' |'TEJOCOTE' | 'TEJO
 
 ENERO   :'Enero';
 FEBRERO :'Febrero';
+MARZO   :'Marzo';
+ABRIL   :'Abril';
 
-TEXT    : [a-zA-Z\u00E0-\u00FC]+;
-WS      : [ \t\r\n,0-9,¿?.¡!]+ -> skip;
+
+NOSPACE :[a-zA-Z \n] -> skip;
+WS      :[\t\r\n]+ -> skip;
