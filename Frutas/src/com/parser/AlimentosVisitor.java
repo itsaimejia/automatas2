@@ -11,11 +11,11 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface AlimentosVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link AlimentosParser#grupos}.
+	 * Visit a parse tree produced by {@link AlimentosParser#grupo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitGrupos(AlimentosParser.GruposContext ctx);
+	T visitGrupo(AlimentosParser.GrupoContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code enero}
 	 * labeled alternative in {@link AlimentosParser#meses}.
@@ -44,6 +44,62 @@ public interface AlimentosVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAbril(AlimentosParser.AbrilContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mayo}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMayo(AlimentosParser.MayoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code junio}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJunio(AlimentosParser.JunioContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code julio}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJulio(AlimentosParser.JulioContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code agosto}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAgosto(AlimentosParser.AgostoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code septiembre}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSeptiembre(AlimentosParser.SeptiembreContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code octubre}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOctubre(AlimentosParser.OctubreContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code noviembre}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNoviembre(AlimentosParser.NoviembreContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code diciembre}
+	 * labeled alternative in {@link AlimentosParser#meses}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDiciembre(AlimentosParser.DiciembreContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code fresa}
 	 * labeled alternative in {@link AlimentosParser#frutas}.
