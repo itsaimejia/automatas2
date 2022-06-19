@@ -8,7 +8,7 @@ import java.util.*;
 
 
 public class MyVisitor extends AlimentosBaseVisitor<String> {
-    public static HashMap<String, List<String>> memory = new HashMap<String,List<String>>();
+    public static HashMap<String, List<String>> memory = new LinkedHashMap<String,List<String>>();
 
     @Override public String visitEnero(AlimentosParser.EneroContext ctx) {
         String mes = ctx.ENERO().getText();
@@ -122,7 +122,7 @@ public class MyVisitor extends AlimentosBaseVisitor<String> {
     }
 
     public void ShowList(){
-        HashMap<String,List<String>> frutaMes = new HashMap<String,List<String>>();
+        HashMap<String,List<String>> frutaMes = new LinkedHashMap<String,List<String>>();
         for (String key: memory.keySet()) {
             List<String> value = memory.get(key);
             for (int f=0; f<value.size(); f++){
